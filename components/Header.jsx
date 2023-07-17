@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createMaterialTopTabNavigator();
@@ -17,12 +17,12 @@ export default function Header() {
     navigation.navigate('Books');
   };
 
-  const handleSearchNavigation = () => {
-    navigation.navigate('SearchScreen');
+  const handleSearchBooksNavigation = () => {
+    navigation.navigate('SearchBooks');
   };
 
-  const handleFavoritesNavigation = () => {
-    navigation.navigate('FavoritesScreen');
+  const handleAddFormNavigation = () => {
+    navigation.navigate('AddForm');
   };
 
   return (
@@ -35,11 +35,11 @@ export default function Header() {
         <TouchableOpacity onPress={handleBooksNavigation}>
           <Icon name="ios-book" size={30} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleSearchNavigation}>
+        <TouchableOpacity onPress={handleSearchBooksNavigation}>
           <Icon name="ios-search" size={30} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleFavoritesNavigation}>
-          <Icon name="ios-heart" size={30} color="black" />
+        <TouchableOpacity onPress={handleAddFormNavigation}>
+          <Icon name="ios-add" size={30} color="black" />
         </TouchableOpacity>
       </View>
     </View>

@@ -6,13 +6,6 @@ import { CATEGORIES, LIVRES } from '../models/data';
 export default function BooksCategories() {
   const { categorieId } = useRoute().params;
 
-  if (categorieId === undefined) {
-    return (
-      <View>
-        <Text>Error: Catégorie non spécifiée</Text>
-      </View>
-    );
-  }
   const filteredBooks = categorieId === 'c5' ? LIVRES : LIVRES.filter((livre) => livre.categorieId.includes(categorieId));
   return (
     <View style={styles.container}>
@@ -22,7 +15,6 @@ export default function BooksCategories() {
         renderItem={({ item }) => (
           <View style={styles.bookContainer}>
             <Text style={styles.bookTitle}>{item.titre}</Text>
-            {/* Vous pouvez afficher d'autres détails du livre ici */}
           </View>
         )}
         keyExtractor={(item) => item.id}
