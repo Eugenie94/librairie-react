@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Header from './components/Header';
 import Categories from './components/Categories';
-import BooksCategories from './components/BooksCategories';
 import Books from './components/Books';
 
 export default function App() {
@@ -12,12 +11,20 @@ export default function App() {
 
   return (
     <NavigationContainer>
+
+      {/* Image de l'application */}
+      <StatusBar barStyle="light-content" backgroundColor="#f5428d" />
+      <Image source={require('./assets/image.jpg')} style={styles.image} />
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>GilbertJeune</Text>
+      </View>
+
       <View style={styles.container}>
-        <Header title="Mon Header" />
         <Stack.Navigator>
           <Stack.Screen name="Categories" component={Categories} />
           <Stack.Screen name="Books" component={Books} />
         </Stack.Navigator>
+        <Header title="Mon Header" />
       </View>
     </NavigationContainer>
   );
@@ -26,6 +33,21 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+  },
+  image: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginTop: 20,
+  },
+  titleContainer: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });

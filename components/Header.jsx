@@ -1,96 +1,44 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createMaterialTopTabNavigator();
 
-function BooksScreen() {
-  const navigation = useNavigation();
-
-  const handleBooksNavigation = () => {
-    navigation.navigate('Books'); 
-  };
-
-  return (
-    <View style={styles.tabContent}>
-      <TouchableOpacity onPress={handleBooksNavigation}>
-        <Text>Books Screen</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-function CategoriesScreen() {
-  const navigation = useNavigation();
-
+export default function Header({ navigation }) {
   const handleCategoriesNavigation = () => {
     navigation.navigate('Categories');
   };
 
-  return (
-    <View style={styles.tabContent}>
-      <TouchableOpacity onPress={handleCategoriesNavigation}>
-        <Text>Categories Screen</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-function SearchScreen() {
-  const navigation = useNavigation();
+  const handleBooksNavigation = () => {
+    navigation.navigate('Books');
+  };
 
   const handleSearchNavigation = () => {
     navigation.navigate('SearchScreen');
   };
-
-  return (
-    <View style={styles.tabContent}>
-      <TouchableOpacity onPress={handleSearchNavigation}>
-        <Text>Search Screen</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-function FavoritesScreen() {
-  const navigation = useNavigation();
 
   const handleFavoritesNavigation = () => {
     navigation.navigate('FavoritesScreen');
   };
 
   return (
-    <View style={styles.tabContent}>
-      <TouchableOpacity onPress={handleFavoritesNavigation}>
-        <Text>Favorites Screen</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-export default function Header() {
-  return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#f5428d" />
-      <Image source={require('../assets/image.jpg')} style={styles.image} />
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>GilbertJeune</Text>
-      </View>
+     
 
       {/* Barre de navigation en bas */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={() => console.log('Clic sur Catégorie')}>
+        <TouchableOpacity onPress={handleCategoriesNavigation}>
           <Icon name="ios-list" size={30} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Clic sur Livre')}>
+        <TouchableOpacity onPress={handleBooksNavigation}>
           <Icon name="ios-book" size={30} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Clic sur Recherche')}>
+        <TouchableOpacity onPress={handleSearchNavigation}>
           <Icon name="ios-search" size={30} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Clic sur Cœur')}>
+        <TouchableOpacity onPress={handleFavoritesNavigation}>
           <Icon name="ios-heart" size={30} color="black" />
         </TouchableOpacity>
       </View>
@@ -138,12 +86,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'white',
-    height: 60,
     borderTopWidth: 1,
     borderTopColor: '#f5428d',
     position: 'absolute',
-    bottom: 0,
+    bottom: 0, // Ajuster la valeur du bottom ici pour positionner la barre en bas
     left: 0,
     right: 0,
+    paddingBottom: 10,
   },
 });
