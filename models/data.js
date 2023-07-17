@@ -55,4 +55,149 @@ export const LIVRES = [
     "https://static.wikia.nocookie.net/bestlecture/images/6/63/La_Rose_%C3%A9carlate%2C_tome_1_Je_savais_que_je_te_rencontrerais_de_Patricia_Lyfoung.jpg/revision/latest?cb=20150112131040&path-prefix=fr",
     true
 ),
+  // Nouveaux livres
+  new Livre(
+    'm6',
+    ['c1'],
+    "Les Misérables",
+    "Dans la France du XIXe siècle, l'histoire de Jean Valjean, un ancien bagnard en quête de rédemption, et de l'inspecteur Javert qui le poursuit sans relâche.",
+    3,
+    "URL de l'image du livre Les Misérables",
+    false
+  ),
+  new Livre(
+    'm7',
+    ['c1'],
+    "Le Comte de Monte-Cristo",
+    "L'histoire d'Edmond Dantès, un homme injustement emprisonné qui cherche à se venger de ceux qui l'ont trahi.",
+    2,
+    "URL de l'image du livre Le Comte de Monte-Cristo",
+    true
+  ),
+  new Livre(
+    'm8',
+    ['c1', 'c3'],
+    "Fondation",
+    "Premier tome de la saga de science-fiction de l'auteur Isaac Asimov, qui raconte l'histoire de la Fondation, une organisation qui tente de préserver la connaissance et la civilisation humaine face à l'effondrement de l'Empire galactique.",
+    5,
+    "URL de l'image du livre Fondation",
+    false
+  ),
+  new Livre(
+    'm9',
+    ['c2'],
+    "Meurtre sur le Nil",
+    "Hercule Poirot enquête sur un meurtre mystérieux qui a eu lieu à bord d'un bateau de croisière sur le Nil.",
+    1,
+    "URL de l'image du livre Meurtre sur le Nil",
+    true
+  ),
+  new Livre(
+    'm10',
+    ['c2'],
+    "Le Chien des Baskerville",
+    "Sherlock Holmes et le Dr. Watson enquêtent sur une malédiction qui pèse sur la famille Baskerville dans les landes sinistres du Devonshire.",
+    4,
+    "URL de l'image du livre Le Chien des Baskerville",
+    false
+  ),
+  new Livre(
+    'm11',
+    ['c2'],
+    "Gone Girl",
+    "L'histoire du mystérieux et troublant disparition d'Amy Dunne et des secrets que son mari Nick cache.",
+    8,
+    "URL de l'image du livre Gone Girl",
+    true
+  ),
+  new Livre(
+    'm12',
+    ['c2'],
+    "La Fille du train",
+    "Rachel, une femme alcoolique et dépressive, devient témoin d'un événement troublant depuis le train qu'elle prend chaque jour. Lorsqu'elle décide d'enquêter, elle se retrouve impliquée dans un mystère inquiétant.",
+    2,
+    "URL de l'image du livre La Fille du train",
+    false
+  ),
+  new Livre(
+    'm13',
+    ['c2'],
+    "Le Silence des Agneaux",
+    "L'agent du FBI Clarice Starling demande l'aide du psychopathe incarcéré Hannibal Lecter pour attraper un tueur en série connu sous le nom de Buffalo Bill.",
+    6,
+    "URL de l'image du livre Le Silence des Agneaux",
+    true
+  ),
+  new Livre(
+    'm14',
+    ['c3'],
+    "2001 : l'Odyssée de l'espace",
+    "Un vaisseau spatial équipé d'une intelligence artificielle nommée HAL 9000 est envoyé en mission pour enquêter sur un mystérieux monolithe noir qui influence l'évolution de l'humanité.",
+    2,
+    "URL de l'image du livre 2001 : l'Odyssée de l'espace",
+    false
+  ),
+  new Livre(
+    'm15',
+    ['c3'],
+    "Le Cycle de Dune",
+    "Dans un lointain futur, l'histoire de la famille Atréides et de la planète désertique Arrakis, source de l'épice, une substance aux pouvoirs mystérieux.",
+    3,
+    "URL de l'image du livre Le Cycle de Dune",
+    true
+  ),
+  new Livre(
+    'm16',
+    ['c3'],
+    "Fahrenheit 451",
+    "Dans une société dystopique, où la lecture est interdite et les livres brûlés, un pompier chargé de détruire les livres commence à remettre en question son rôle.",
+    1,
+    "URL de l'image du livre Fahrenheit 451",
+    false
+  ),
+  new Livre(
+    'm17',
+    ['c4'],
+    "Orgueil et Préjugés",
+    "L'histoire de Elizabeth Bennet et de Mr. Darcy, qui se détestent mutuellement au début, mais finissent par se découvrir des sentiments amoureux.",
+    7,
+    "URL de l'image du livre Orgueil et Préjugés",
+    true
+  ),
+  new Livre(
+    'm18',
+    ['c4'],
+    "Outlander",
+    "Claire Randall, une infirmière de guerre, est transportée dans le temps depuis 1945 jusqu'en 1743 en Écosse, où elle est impliquée dans des intrigues politiques et des romances passionnées.",
+    5,
+    "URL de l'image du livre Outlander",
+    false
+  ),
+  new Livre(
+    'm19',
+    ['c4'],
+    "P.S. I Love You",
+    "Après la mort de son mari, Holly reçoit des lettres qu'il a écrites avant de mourir, l'aidant à faire son deuil et à retrouver le bonheur.",
+    3,
+    "URL de l'image du livre P.S. I Love You",
+    true
+  ),
+  new Livre(
+    'm20',
+    ['c4'],
+    "Roméo et Juliette",
+    "La tragique histoire d'amour entre Roméo Montaigu et Juliette Capulet, deux jeunes amants issus de familles rivales.",
+    2,
+    "URL de l'image du livre Roméo et Juliette",
+    false
+  ),
+  new Livre(
+    'm21',
+    ['c3'],
+    "Harry Potter à l'école des sorciers",
+    "Le premier tome de la célèbre saga de J.K. Rowling, qui raconte l'histoire du jeune sorcier Harry Potter et de son entrée à Poudlard, l'école de sorcellerie.",
+    10,
+    "URL de l'image du livre Harry Potter à l'école des sorciers",
+    false
+  ),
 ];
