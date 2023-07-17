@@ -6,6 +6,7 @@ export const CATEGORIES = [
   new Categorie('c2', 'policier', '#f54242'),
   new Categorie('c3', 'SF', '#f5a442'),
   new Categorie('c4', 'romance', '#f5d142'),
+  new Categorie('c4', 'tous', '#808080'),
 ];
 
 export const LIVRES = [
