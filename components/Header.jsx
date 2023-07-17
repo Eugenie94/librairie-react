@@ -6,7 +6,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function Header({ navigation }) {
+export default function Header() {
+  const navigation = useNavigation();
+
   const handleCategoriesNavigation = () => {
     navigation.navigate('Categories');
   };
@@ -25,8 +27,6 @@ export default function Header({ navigation }) {
 
   return (
     <View style={styles.container}>
-     
-
       {/* Barre de navigation en bas */}
       <View style={styles.bottomNav}>
         <TouchableOpacity onPress={handleCategoriesNavigation}>
