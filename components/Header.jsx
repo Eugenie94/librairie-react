@@ -21,8 +21,8 @@ export default function Header() {
     navigation.navigate('SearchBooks');
   };
 
-  const handleAddFormNavigation = () => {
-    navigation.navigate('AddForm');
+  const handleProfileNavigation = () => {
+    navigation.navigate('Profile');
   };
 
   return (
@@ -38,8 +38,8 @@ export default function Header() {
         <TouchableOpacity onPress={handleSearchBooksNavigation}>
           <Icon name="ios-search" size={30} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleAddFormNavigation}>
-          <Icon name="ios-add" size={30} color="black" />
+        <TouchableOpacity onPress={handleProfileNavigation}>
+          <Icon name="person" size={30} color="black" />
         </TouchableOpacity>
       </View>
     </View>
