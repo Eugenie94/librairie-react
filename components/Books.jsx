@@ -1,116 +1,116 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Button } from 'react-native';
 import { Card } from 'react-native-paper';
-import { LIVRES } from '../models/data';
+import { CATEGORIES, LIVRES } from '../models/data';
 
 export default function Books() {
-  const [titreLivre, setTitreLivre] = useState('');
-  const [descriptionLivre, setDescriptionLivre] = useState('');
+  const [titreLivre, setTitreLivre] = useState('Le parfum de Suskind');
+  const [descriptionLivre, setDescriptionLivre] = useState("Le Parfum, c'est l'histoire abominable et drolatique de Grenouille. Un homme marqué par la mort dès sa naissance, à l'odorat hors du commun et au destin brisé. Le Parfum, sous-titré Histoire d'un meurtrier est un roman historique de Patrick Süskind publié en 1985.");
   const [categorieId, setCategorieId] = useState('');
-  const [tomes, setTomes] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [tomes, setTomes] = useState('2');
+  const [imageUrl, setImageUrl] = useState('https://cdn1.booknode.com/book_cover/0/le_parfum-122-264-432.jpg');
   const [isFormExpanded, setIsFormExpanded] = useState(false);
 
-  // Fonction pour ajouter un nouveau livre
-  const handleAddLivre = () => {
-    const newLivre = {
-      id: LIVRES.length + 1,
-      titre: titreLivre,
-      description: descriptionLivre,
-      categorieId: categorieId,
-      tomes: tomes || 1,
-      imageUrl: imageUrl,
-    };
-    setIsFormExpanded(false);
-    
-    LIVRES.push(newLivre);
-
-    // Effacer les champs de saisie après l'ajout du livre
-    setTitreLivre('');
-    setDescriptionLivre('');
-    setCategorieId('');
-    setImageUrl('');
-    setTomes('');
-    setIsFormExpanded(false);
+ // Fonction pour ajouter un nouveau livre
+ const handleAddLivre = () => {
+  const newLivre = {
+    id: LIVRES.length + 1,
+    titre: titreLivre,
+    description: descriptionLivre,
+    categorieId: categorieId,
+    tomes: tomes || 1,
+    imageUrl: imageUrl,
   };
+  setIsFormExpanded(false);
 
-  // Fonction pour afficher un livre dans la liste
-  const renderLivre = ({ item }) => (
-    <TouchableOpacity activeOpacity={0.8}>
-      <Card style={[styles.card, styles.bookCard]}>
-        <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
-        <Card.Content>
-          <Text style={styles.titre}>{item.titre}</Text>
-          <Text style={styles.description} numberOfLines={3}>
-            {item.description}
-          </Text>
-          <Text style={styles.tomes}>Tomes: {item.tomes}</Text>
-        </Card.Content>
-      </Card>
-    </TouchableOpacity>
-  );
+  LIVRES.push(newLivre);
 
-  return (
-    <View style={styles.container}>
-      {/* Formulaire pour ajouter un livre */}
-      <View style={styles.formContainer}>
-        {isFormExpanded && (
-          <>
-            <TextInput
-              style={styles.input}
-              value={titreLivre}
-              onChangeText={setTitreLivre}
-              placeholder="Titre du livre"
-            />
-            <TextInput
-              style={[styles.input, styles.multilineInput]}
-              value={descriptionLivre}
-              onChangeText={setDescriptionLivre}
-              placeholder="Description du livre"
-              multiline
-              numberOfLines={4}
-            />
-            <TextInput
-              style={styles.input}
-              value={categorieId}
-              onChangeText={setCategorieId}
-              placeholder="Catégorie du livre"
-            />
-            <TextInput
-              style={styles.input}
-              value={imageUrl}
-              onChangeText={setImageUrl}
-              placeholder="URL de l'image du livre"
-            />
-            <TextInput
-              style={styles.input}
-              value={tomes}
-              onChangeText={setTomes}
-              placeholder="Tome du livre"
-            />
-            <Button title="Ajouter" onPress={handleAddLivre} />
-            <View style={styles.buttonMargin}>
-              <Button title="Réduire le formulaire" onPress={() => setIsFormExpanded(false)} />
-            </View>
-          </>
-        )}
-        {!isFormExpanded && (
-          <Button title="Ajouter un livre" onPress={() => setIsFormExpanded(true)} />
-        )}
-      </View>
+  // Effacer les champs de saisie après l'ajout du livre
+  setTitreLivre('');
+  setDescriptionLivre('');
+  setCategorieId('');
+  setImageUrl('');
+  setTomes('');
+  setIsFormExpanded(false);
+};
 
-      {/* Liste de livres */}
-      <View style={styles.listContainer}>
-        <FlatList
-          data={LIVRES}
-          renderItem={renderLivre}
-          keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={styles.flatListContent}
-        />
-      </View>
+// Fonction pour afficher un livre dans la liste
+const renderLivre = ({ item }) => (
+  <TouchableOpacity activeOpacity={0.8}>
+    <Card style={[styles.card, styles.bookCard]}>
+      <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
+      <Card.Content>
+        <Text style={styles.titre}>{item.titre}</Text>
+        <Text style={styles.description} numberOfLines={3}>
+          {item.description}
+        </Text>
+        <Text style={styles.tomes}>Tomes: {item.tomes}</Text>
+      </Card.Content>
+    </Card>
+  </TouchableOpacity>
+);
+
+return (
+  <View style={styles.container}>
+    {/* Formulaire pour ajouter un livre */}
+    <View style={styles.formContainer}>
+      {isFormExpanded && (
+        <>
+          <TextInput
+            style={styles.input}
+            value={titreLivre}
+            onChangeText={setTitreLivre}
+            placeholder="Titre du livre"
+          />
+          <TextInput
+            style={[styles.input, styles.multilineInput]}
+            value={descriptionLivre}
+            onChangeText={setDescriptionLivre}
+            placeholder="Description du livre"
+            multiline
+            numberOfLines={4}
+          />
+          <TextInput
+            style={styles.input}
+            value={categorieId}
+            onChangeText={setCategorieId}
+            placeholder="Catégorie du livre"
+          />
+          <TextInput
+            style={styles.input}
+            value={imageUrl}
+            onChangeText={setImageUrl}
+            placeholder="URL de l'image du livre"
+          />
+          <TextInput
+            style={styles.input}
+            value={tomes}
+            onChangeText={setTomes}
+            placeholder="Tome du livre"
+          />
+          <Button title="Ajouter" onPress={handleAddLivre} />
+          <View style={styles.buttonMargin}>
+            <Button title="Réduire le formulaire" onPress={() => setIsFormExpanded(false)} />
+          </View>
+        </>
+      )}
+      {!isFormExpanded && (
+        <Button title="Ajouter un livre" onPress={() => setIsFormExpanded(true)} />
+      )}
     </View>
-  );
-}
+
+    {/* Liste de livres */}
+    <View style={styles.listContainer}>
+      <FlatList
+        data={LIVRES}
+        renderItem={renderLivre}
+        keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={styles.flatListContent}
+      />
+    </View>
+  </View>
+);
+      }
 
 const styles = StyleSheet.create({
   container: {

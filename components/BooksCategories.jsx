@@ -8,13 +8,16 @@ export default function BooksCategories() {
   // Récupérer l'ID de la catégorie à afficher depuis les paramètres de navigation
   const { categorieId } = useRoute().params;
 
+  // Récupérer la catégorie sélectionnée depuis le tableau CATEGORIES
+  const selectedCategory = CATEGORIES.find((cat) => cat.id === categorieId);
+
   // Filtrer les livres en fonction de la catégorie sélectionnée
-  const filteredBooks = categorieId === 'c5' ? LIVRES : LIVRES.filter((livre) => livre.categorieId.includes(categorieId));
+  const filteredBooks = LIVRES.filter((livre) => livre.categorieId === categorieId);
 
   return (
     <View style={styles.container}>
       {/* Afficher le titre de la catégorie */}
-      <Text style={styles.categoryTitle}>{CATEGORIES.find((cat) => cat.id === categorieId)?.genre}</Text>
+      <Text style={styles.categoryTitle}>{selectedCategory?.genre}</Text>
       {/* Liste des livres filtrés */}
       <FlatList
         data={filteredBooks}

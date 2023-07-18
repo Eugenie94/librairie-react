@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { CATEGORIES } from '../models/data';
+import { CATEGORIES, LIVRES } from '../models/data';
 
 export default function Categories() {
   const navigation = useNavigation();
@@ -18,21 +18,16 @@ export default function Categories() {
       couleur: couleurCategorie,
     };
 
-    // Ajouter la nouvelle catégorie à la liste existante des catégories
-    CATEGORIES.push(newCategorie);
+// Ajouter la nouvelle catégorie à la liste existante des catégories
+CATEGORIES.push(newCategorie);
 
     // Effacer les champs de saisie après l'ajout de la catégorie
     setTitreCategorie('');
     setCouleurCategorie('');
   };
 
-  // Fonction pour gérer la navigation lorsqu'une catégorie est sélectionnée
   const handleCategoryPress = (categorie) => {
-    if (categorie.id === 'c5') {
-      navigation.navigate('BooksCategories', { categorieId: 'c5' });
-    } else {
-      navigation.navigate('BooksCategories', { categorieId: categorie.id });
-    }
+    navigation.navigate('BooksCategories', { categorieId: categorie.id });
   };
 
   // Fonction pour diviser le tableau des catégories en chunks de taille 2 pour l'affichage en grille
@@ -44,8 +39,8 @@ export default function Categories() {
     return chunks;
   };
 
-  // Fonction pour afficher le bouton de catégorie
-  const renderCategoryButton = ({ item }) => (
+   // Fonction pour afficher le bouton de catégorie
+   const renderCategoryButton = ({ item }) => (
     <TouchableOpacity
       style={[styles.categoryButton, { backgroundColor: item.couleur }]}
       onPress={() => handleCategoryPress(item)}
@@ -61,7 +56,7 @@ export default function Categories() {
     <View style={styles.container}>
       {/* Afficher le formulaire d'ajout de catégorie */}
       <View style={styles.formContainer}>
-        {!isFormVisible && (
+      {!isFormVisible && (
           <Button title="Ajouter une catégorie" onPress={() => setIsFormVisible(true)} />
         )}
         {isFormVisible && (
@@ -86,8 +81,8 @@ export default function Categories() {
         )}
       </View>
 
-      {/* Afficher les catégories sous forme de grille */}
-      {categoriesChunks.map((chunk, index) => (
+ {/* Afficher les catégories sous forme de grille */}
+ {categoriesChunks.map((chunk, index) => (
         <View key={index} style={styles.categoryRow}>
           {chunk.map((category) => (
             <View key={category.id} style={styles.categoryItem}>
