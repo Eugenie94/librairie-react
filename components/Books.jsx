@@ -21,7 +21,8 @@ export default function Books() {
       tomes: tomes || 1,
       imageUrl: imageUrl,
     };
-
+    setIsFormExpanded(false);
+    
     LIVRES.push(newLivre);
 
     // Effacer les champs de saisie après l'ajout du livre
@@ -89,7 +90,7 @@ export default function Books() {
             />
             <Button title="Ajouter" onPress={handleAddLivre} />
             <View style={styles.buttonMargin}>
-              <Button title="Réduire le formulaire" onPress={() => setIsFormVisible(false)} />
+              <Button title="Réduire le formulaire" onPress={() => setIsFormExpanded(false)} />
             </View>
           </>
         )}
