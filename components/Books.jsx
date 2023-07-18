@@ -88,7 +88,9 @@ export default function Books() {
               placeholder="Tome du livre"
             />
             <Button title="Ajouter" onPress={handleAddLivre} />
-            <Button title="Réduire le formulaire" onPress={() => setIsFormExpanded(false)} />
+            <View style={styles.buttonMargin}>
+              <Button title="Réduire le formulaire" onPress={() => setIsFormVisible(false)} />
+            </View>
           </>
         )}
         {!isFormExpanded && (
@@ -163,5 +165,8 @@ const styles = StyleSheet.create({
   tomes: {
     fontSize: 14,
     color: '#666',
+  },
+  buttonMargin: {
+    marginVertical: 10,
   },
 });

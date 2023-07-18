@@ -79,7 +79,9 @@ export default function Categories() {
               placeholder="Couleur de la catégorie"
             />
             <Button title="Ajouter" onPress={handleAddCategorie} />
-            <Button title="Cacher le formulaire" onPress={() => setIsFormVisible(false)} />
+            <View style={styles.buttonMargin}>
+              <Button title="Réduire le formulaire" onPress={() => setIsFormVisible(false)} />
+            </View>
           </>
         )}
       </View>
@@ -134,5 +136,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  buttonMargin: {
+    marginVertical: 10,
   },
 });
