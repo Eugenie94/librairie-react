@@ -62,7 +62,7 @@ export const LIVRES = [
     "Les Misérables",
     "Dans la France du XIXe siècle, l'histoire de Jean Valjean, un ancien bagnard en quête de rédemption, et de l'inspecteur Javert qui le poursuit sans relâche.",
     3,
-    "URL de l'image du livre Les Misérables",
+    "https://m.media-amazon.com/images/I/71lxLN4vorL._AC_UF1000,1000_QL80_.jpg",
     false
   ),
   new Livre(
@@ -71,7 +71,7 @@ export const LIVRES = [
     "Le Comte de Monte-Cristo",
     "L'histoire d'Edmond Dantès, un homme injustement emprisonné qui cherche à se venger de ceux qui l'ont trahi.",
     2,
-    "URL de l'image du livre Le Comte de Monte-Cristo",
+    "https://m.media-amazon.com/images/I/51NHAOCVt6L.jpg",
     true
   ),
   new Livre(
@@ -80,7 +80,7 @@ export const LIVRES = [
     "Fondation",
     "Premier tome de la saga de science-fiction de l'auteur Isaac Asimov, qui raconte l'histoire de la Fondation, une organisation qui tente de préserver la connaissance et la civilisation humaine face à l'effondrement de l'Empire galactique.",
     5,
-    "URL de l'image du livre Fondation",
+    "https://bddi.2dcom.fr/libriweb.php?ean=9782070360536",
     false
   ),
   new Livre(
@@ -89,7 +89,7 @@ export const LIVRES = [
     "Meurtre sur le Nil",
     "Hercule Poirot enquête sur un meurtre mystérieux qui a eu lieu à bord d'un bateau de croisière sur le Nil.",
     1,
-    "URL de l'image du livre Meurtre sur le Nil",
+    "https://www.livredepoche.com/sites/default/files/images/livres/couv/9782253079392-001-T.jpeg",
     true
   ),
   new Livre(
@@ -98,7 +98,7 @@ export const LIVRES = [
     "Le Chien des Baskerville",
     "Sherlock Holmes et le Dr. Watson enquêtent sur une malédiction qui pèse sur la famille Baskerville dans les landes sinistres du Devonshire.",
     4,
-    "URL de l'image du livre Le Chien des Baskerville",
+    "https://m.media-amazon.com/images/I/81js4ajZ7AL._AC_UF1000,1000_QL80_.jpg",
     false
   ),
   new Livre(
@@ -107,7 +107,7 @@ export const LIVRES = [
     "Gone Girl",
     "L'histoire du mystérieux et troublant disparition d'Amy Dunne et des secrets que son mari Nick cache.",
     8,
-    "URL de l'image du livre Gone Girl",
+    "https://m.media-amazon.com/images/I/71+khXHbe5L._AC_UF1000,1000_QL80_.jpg",
     true
   ),
   new Livre(
@@ -116,7 +116,7 @@ export const LIVRES = [
     "La Fille du train",
     "Rachel, une femme alcoolique et dépressive, devient témoin d'un événement troublant depuis le train qu'elle prend chaque jour. Lorsqu'elle décide d'enquêter, elle se retrouve impliquée dans un mystère inquiétant.",
     2,
-    "URL de l'image du livre La Fille du train",
+    "https://static.fnac-static.com/multimedia/Images/FR/NR/13/71/79/7958803/1507-1/tsp20230308074238/La-Fille-du-train.jpg",
     false
   ),
   new Livre(
@@ -125,7 +125,7 @@ export const LIVRES = [
     "Le Silence des Agneaux",
     "L'agent du FBI Clarice Starling demande l'aide du psychopathe incarcéré Hannibal Lecter pour attraper un tueur en série connu sous le nom de Buffalo Bill.",
     6,
-    "URL de l'image du livre Le Silence des Agneaux",
+    "https://m.media-amazon.com/images/I/61hEowVf8rL._AC_UF1000,1000_QL80_.jpg",
     true
   ),
   new Livre(
@@ -134,7 +134,7 @@ export const LIVRES = [
     "2001 : l'Odyssée de l'espace",
     "Un vaisseau spatial équipé d'une intelligence artificielle nommée HAL 9000 est envoyé en mission pour enquêter sur un mystérieux monolithe noir qui influence l'évolution de l'humanité.",
     2,
-    "URL de l'image du livre 2001 : l'Odyssée de l'espace",
+    "https://www.babelio.com/couv/CVT_17888_892936.jpg",
     false
   ),
   new Livre(
@@ -143,7 +143,7 @@ export const LIVRES = [
     "Le Cycle de Dune",
     "Dans un lointain futur, l'histoire de la famille Atréides et de la planète désertique Arrakis, source de l'épice, une substance aux pouvoirs mystérieux.",
     3,
-    "URL de l'image du livre Le Cycle de Dune",
+    "https://m.media-amazon.com/images/I/51DPA94V79L._AC_UF1000,1000_QL80_.jpg",
     true
   ),
   new Livre(
@@ -152,7 +152,7 @@ export const LIVRES = [
     "Fahrenheit 451",
     "Dans une société dystopique, où la lecture est interdite et les livres brûlés, un pompier chargé de détruire les livres commence à remettre en question son rôle.",
     1,
-    "URL de l'image du livre Fahrenheit 451",
+    "https://bddi.2dcom.fr/libriweb.php?ean=9780006546061",
     false
   ),
   new Livre(
@@ -161,7 +161,7 @@ export const LIVRES = [
     "Orgueil et Préjugés",
     "L'histoire de Elizabeth Bennet et de Mr. Darcy, qui se détestent mutuellement au début, mais finissent par se découvrir des sentiments amoureux.",
     7,
-    "URL de l'image du livre Orgueil et Préjugés",
+    "https://m.media-amazon.com/images/I/51tKPGVVVVL.jpg",
     true
   ),
   new Livre(
@@ -170,7 +170,7 @@ export const LIVRES = [
     "Outlander",
     "Claire Randall, une infirmière de guerre, est transportée dans le temps depuis 1945 jusqu'en 1743 en Écosse, où elle est impliquée dans des intrigues politiques et des romances passionnées.",
     5,
-    "URL de l'image du livre Outlander",
+    "https://m.media-amazon.com/images/I/61ey3JKeNoL._AC_UF1000,1000_QL80_.jpg",
     false
   ),
   new Livre(
@@ -179,7 +179,7 @@ export const LIVRES = [
     "P.S. I Love You",
     "Après la mort de son mari, Holly reçoit des lettres qu'il a écrites avant de mourir, l'aidant à faire son deuil et à retrouver le bonheur.",
     3,
-    "URL de l'image du livre P.S. I Love You",
+    "https://www.albin-michel.fr/sites/default/files/couvertures/9782226183897-j.jpg",
     true
   ),
   new Livre(
@@ -188,7 +188,7 @@ export const LIVRES = [
     "Roméo et Juliette",
     "La tragique histoire d'amour entre Roméo Montaigu et Juliette Capulet, deux jeunes amants issus de familles rivales.",
     2,
-    "URL de l'image du livre Roméo et Juliette",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFUfyrvYepF4Zqrx9e7AYq4PY76Z79DfIWfBwvuFYBwndxJ2dCUrmXXvwswzJtixYrnxY&usqp=CAU",
     false
   ),
   new Livre(
@@ -197,7 +197,7 @@ export const LIVRES = [
     "Harry Potter à l'école des sorciers",
     "Le premier tome de la célèbre saga de J.K. Rowling, qui raconte l'histoire du jeune sorcier Harry Potter et de son entrée à Poudlard, l'école de sorcellerie.",
     10,
-    "URL de l'image du livre Harry Potter à l'école des sorciers",
+    "https://m.media-amazon.com/images/I/71N6SgkNlcL._AC_UF1000,1000_QL80_.jpg",
     false
   ),
 ];
