@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#f0f0f0',
         padding: 20,
+        marginBottom: 50,
     },
     profilePicture: {
         width: 150,

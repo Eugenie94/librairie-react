@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
-const Tab = createMaterialTopTabNavigator();
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Header() {
   const navigation = useNavigation();
@@ -26,20 +25,19 @@ export default function Header() {
   };
 
   return (
-    <View style={styles.container}>
-      {/* Barre de navigation en bas */}
+    <View style={styles.headerContainer}>
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={handleCategoriesNavigation}>
-          <Icon name="ios-list" size={30} color="black" />
+        <TouchableOpacity style={styles.iconContainer} onPress={handleCategoriesNavigation}>
+          <MaterialCommunityIcons name="bookshelf" size={30} color="#f5428d" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleBooksNavigation}>
-          <Icon name="ios-book" size={30} color="black" />
+        <TouchableOpacity style={styles.iconContainer} onPress={handleBooksNavigation}>
+          <FeatherIcon name="book" size={30} color="#f5428d" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleSearchBooksNavigation}>
-          <Icon name="ios-search" size={30} color="black" />
+        <TouchableOpacity style={styles.iconContainer} onPress={handleSearchBooksNavigation}>
+          <FeatherIcon name="search" size={30} color="#f5428d" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleProfileNavigation}>
-          <Icon name="person" size={30} color="black" />
+        <TouchableOpacity style={styles.iconContainer} onPress={handleProfileNavigation}>
+          <Icon name="person" size={30} color="#f5428d" />
         </TouchableOpacity>
       </View>
     </View>
@@ -47,51 +45,22 @@ export default function Header() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    resizeMode: 'contain',
-    alignSelf: 'center',
-    marginTop: 20,
-  },
-  titleContainer: {
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  tabBar: {
-    backgroundColor: '#f5428d',
-  },
-  tabLabel: {
-    color: 'white',
-    fontSize: 16,
-  },
-  tabIndicator: {
-    backgroundColor: 'white',
-  },
-  tabContent: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  headerContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   bottomNav: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderTopColor: '#f5428d',
-    position: 'absolute',
-    bottom: 0, // Ajuster la valeur du bottom ici pour positionner la barre en bas
-    left: 0,
-    right: 0,
+    backgroundColor: '#ECECEC',
+    borderTopWidth: 3,
+    borderTopColor: '#D5D3D3',
     paddingBottom: 10,
+  },
+  iconContainer: {
+    padding: 10,
   },
 });
