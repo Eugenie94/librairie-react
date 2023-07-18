@@ -35,19 +35,19 @@ export default function App() {
           }}
         >
           {/* Écran pour le composant Categories */}
-          <Stack.Screen name="Categories" component={Categories} options={{ headerTitle: 'Categories' }} />
+          <Stack.Screen name="Categories" component={Categories} options={{ headerTitle: 'Catégories' }} />
 
           {/* Écran pour le composant Books */}
-          <Stack.Screen name="Books" component={Books} options={{ headerTitle: 'Books' }} />
+          <Stack.Screen name="Books" component={Books} options={{ headerTitle: 'Livres' }} />
 
           {/* Écran pour le composant BooksCategories */}
-          <Stack.Screen name="BooksCategories" component={BooksCategories} options={{ headerTitle: 'Books Categories' }} />
+          <Stack.Screen name="BooksCategories" component={BooksCategories} options={{ headerTitle: 'Livres filtrés' }} />
 
           {/* Écran pour le composant SearchBooks */}
-          <Stack.Screen name="SearchBooks" component={SearchBooks} options={{ headerTitle: 'Search Books' }} />
+          <Stack.Screen name="SearchBooks" component={SearchBooks} options={{ headerTitle: 'Recherchez un livre' }} />
 
           {/* Écran pour le composant Profile */}
-          <Stack.Screen name="Profile" component={Profile} options={{ headerTitle: 'Profile' }} />
+          <Stack.Screen name="Profile" component={Profile} options={{ headerTitle: 'Votre profil' }} />
         </Stack.Navigator>
 
         {/* Composant Header */}
