@@ -9,9 +9,9 @@ export default function Books() {
   const [categorieId, setCategorieId] = useState('');
   const [tomes, setTomes] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [enCours, setEnCours] = useState(false);
   const [isFormExpanded, setIsFormExpanded] = useState(false);
 
+  // Fonction pour ajouter un nouveau livre
   const handleAddLivre = () => {
     const newLivre = {
       id: LIVRES.length + 1,
@@ -20,11 +20,11 @@ export default function Books() {
       categorieId: categorieId,
       tomes: tomes || 1,
       imageUrl: imageUrl,
-      enCours: enCours,
     };
 
     LIVRES.push(newLivre);
 
+    // Effacer les champs de saisie après l'ajout du livre
     setTitreLivre('');
     setDescriptionLivre('');
     setCategorieId('');
@@ -33,6 +33,7 @@ export default function Books() {
     setIsFormExpanded(false);
   };
 
+  // Fonction pour afficher un livre dans la liste
   const renderLivre = ({ item }) => (
     <TouchableOpacity activeOpacity={0.8}>
       <Card style={[styles.card, styles.bookCard]}>
@@ -47,8 +48,10 @@ export default function Books() {
       </Card>
     </TouchableOpacity>
   );
+
   return (
     <View style={styles.container}>
+      {/* Formulaire pour ajouter un livre */}
       <View style={styles.formContainer}>
         {isFormExpanded && (
           <>
@@ -118,11 +121,6 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
   },
-  label: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
@@ -147,7 +145,7 @@ const styles = StyleSheet.create({
     borderColor: '#A2A2A2',
   },
   coverImage: {
-    height: 150, 
+    height: 150,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
@@ -159,7 +157,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    marginBottom: 6, 
+    marginBottom: 6,
     color: '#666',
   },
   tomes: {

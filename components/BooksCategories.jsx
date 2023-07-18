@@ -5,18 +5,22 @@ import { CATEGORIES, LIVRES } from '../models/data';
 import { Card, Title } from 'react-native-paper';
 
 export default function BooksCategories() {
+  // Récupérer l'ID de la catégorie à afficher depuis les paramètres de navigation
   const { categorieId } = useRoute().params;
 
+  // Filtrer les livres en fonction de la catégorie sélectionnée
   const filteredBooks = categorieId === 'c5' ? LIVRES : LIVRES.filter((livre) => livre.categorieId.includes(categorieId));
 
   return (
     <View style={styles.container}>
+      {/* Afficher le titre de la catégorie */}
       <Text style={styles.categoryTitle}>{CATEGORIES.find((cat) => cat.id === categorieId)?.genre}</Text>
+      {/* Liste des livres filtrés */}
       <FlatList
         data={filteredBooks}
         renderItem={({ item }) => (
           <Card style={[styles.card, styles.bookCard]}>
-          <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
+            <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
             <Card.Content>
               <Title style={styles.bookTitle}>{item.titre}</Title>
               <Text style={styles.bookDescription}>{item.description}</Text>
@@ -58,20 +62,9 @@ const styles = StyleSheet.create({
     borderColor: '#A2A2A2',
   },
   coverImage: {
-    height: 150, 
+    height: 150,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-  },
-  titre: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginTop: 10,
-    marginBottom: 6,
-  },
-  description: {
-    fontSize: 14,
-    marginBottom: 6, 
-    color: '#666',
   },
   bookTitle: {
     fontSize: 18,

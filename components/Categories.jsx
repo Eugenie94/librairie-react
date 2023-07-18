@@ -9,22 +9,24 @@ export default function Categories() {
   const [couleurCategorie, setCouleurCategorie] = useState('');
   const [isFormVisible, setIsFormVisible] = useState(false);
 
+  // Fonction pour ajouter une nouvelle catégorie
   const handleAddCategorie = () => {
-    // Create a new category object with the entered values
     const newCategorie = {
-      id: `c${CATEGORIES.length + 1}`, // Generate a unique ID for the new category
+      // Générer un ID unique pour la nouvelle catégorie
+      id: `c${CATEGORIES.length + 1}`,
       genre: titreCategorie,
       couleur: couleurCategorie,
     };
 
-    // Add the new category to the existing list of categories
+    // Ajouter la nouvelle catégorie à la liste existante des catégories
     CATEGORIES.push(newCategorie);
 
-    // Clear the input fields after adding the category
+    // Effacer les champs de saisie après l'ajout de la catégorie
     setTitreCategorie('');
     setCouleurCategorie('');
   };
 
+  // Fonction pour gérer la navigation lorsqu'une catégorie est sélectionnée
   const handleCategoryPress = (categorie) => {
     if (categorie.id === 'c5') {
       navigation.navigate('BooksCategories', { categorieId: 'c5' });
@@ -33,7 +35,7 @@ export default function Categories() {
     }
   };
 
-  // Function to split the categories array into chunks of size 2
+  // Fonction pour diviser le tableau des catégories en chunks de taille 2 pour l'affichage en grille
   const splitIntoChunks = (array, chunkSize) => {
     const chunks = [];
     for (let i = 0; i < array.length; i += chunkSize) {
@@ -42,6 +44,7 @@ export default function Categories() {
     return chunks;
   };
 
+  // Fonction pour afficher le bouton de catégorie
   const renderCategoryButton = ({ item }) => (
     <TouchableOpacity
       style={[styles.categoryButton, { backgroundColor: item.couleur }]}
@@ -51,10 +54,12 @@ export default function Categories() {
     </TouchableOpacity>
   );
 
+  // Diviser les catégories en chunks de taille 2 pour l'affichage en grille
   const categoriesChunks = splitIntoChunks(CATEGORIES, 2);
 
   return (
     <View style={styles.container}>
+      {/* Afficher le formulaire d'ajout de catégorie */}
       <View style={styles.formContainer}>
         {!isFormVisible && (
           <Button title="Ajouter une catégorie" onPress={() => setIsFormVisible(true)} />
@@ -79,6 +84,7 @@ export default function Categories() {
         )}
       </View>
 
+      {/* Afficher les catégories sous forme de grille */}
       {categoriesChunks.map((chunk, index) => (
         <View key={index} style={styles.categoryRow}>
           {chunk.map((category) => (

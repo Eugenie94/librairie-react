@@ -6,17 +6,19 @@ import { LIVRES } from '../models/data';
 export default function SearchBooks() {
   const [searchText, setSearchText] = useState('');
 
+  // Gérer le changement du texte de recherche
   const handleSearchTextChange = (text) => {
     setSearchText(text);
   };
 
+  // Filtrer les livres en fonction du texte de recherche
   const filteredBooks = LIVRES.filter((livre) =>
     livre.titre.toLowerCase().includes(searchText.toLowerCase())
   );
 
   const renderLivre = ({ item }) => (
     <TouchableOpacity activeOpacity={0.8}>
-    <Card style={[styles.card, styles.bookCard]}>
+      <Card style={[styles.card, styles.bookCard]}>
         <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
         <Card.Content>
           <Text style={styles.titre}>{item.titre}</Text>
@@ -29,6 +31,7 @@ export default function SearchBooks() {
 
   return (
     <View style={styles.container}>
+      {/* Champ de recherche */}
       <TextInput
         style={styles.searchInput}
         placeholder="Rechercher un livre par son nom"
@@ -36,11 +39,12 @@ export default function SearchBooks() {
         value={searchText}
       />
 
+      {/* Liste des livres filtrés */}
       <FlatList
         data={filteredBooks}
         renderItem={renderLivre}
         keyExtractor={(item) => item.id.toString()}
-        ListEmptyComponent={<Text>Aucun livre trouvé</Text>}
+        ListEmptyComponent={<Text>Aucun livre trouvé</Text>} // Affiche le message si la liste est vide
         contentContainerStyle={styles.flatListContent}
       />
     </View>
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
     borderColor: '#A2A2A2',
   },
   coverImage: {
-    height: 150, 
+    height: 150,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
@@ -90,7 +94,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    marginBottom: 6, 
+    marginBottom: 6,
     color: '#666',
   },
   tomes: {

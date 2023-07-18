@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
@@ -8,18 +7,22 @@ import { useNavigation } from '@react-navigation/native';
 export default function Header() {
   const navigation = useNavigation();
 
+  // Fonction de navigation vers la page des catégories
   const handleCategoriesNavigation = () => {
     navigation.navigate('Categories');
   };
 
+  // Fonction de navigation vers la page des livres
   const handleBooksNavigation = () => {
     navigation.navigate('Books');
   };
 
+  // Fonction de navigation vers la page de recherche de livres
   const handleSearchBooksNavigation = () => {
     navigation.navigate('SearchBooks');
   };
 
+  // Fonction de navigation vers la page de profil
   const handleProfileNavigation = () => {
     navigation.navigate('Profile');
   };
@@ -27,17 +30,21 @@ export default function Header() {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.bottomNav}>
+        {/* Bouton de navigation vers la page des catégories */}
         <TouchableOpacity style={styles.iconContainer} onPress={handleCategoriesNavigation}>
           <MaterialCommunityIcons name="bookshelf" size={30} color="#f5428d" />
         </TouchableOpacity>
+        {/* Bouton de navigation vers la page des livres */}
         <TouchableOpacity style={styles.iconContainer} onPress={handleBooksNavigation}>
           <FeatherIcon name="book" size={30} color="#f5428d" />
         </TouchableOpacity>
+        {/* Bouton de navigation vers la page de recherche de livres */}
         <TouchableOpacity style={styles.iconContainer} onPress={handleSearchBooksNavigation}>
           <FeatherIcon name="search" size={30} color="#f5428d" />
         </TouchableOpacity>
+        {/* Bouton de navigation vers la page de profil */}
         <TouchableOpacity style={styles.iconContainer} onPress={handleProfileNavigation}>
-          <Icon name="person" size={30} color="#f5428d" />
+          <MaterialCommunityIcons name="account" size={30} color="#f5428d" />
         </TouchableOpacity>
       </View>
     </View>
