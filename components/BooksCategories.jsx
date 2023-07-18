@@ -1,23 +1,21 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import { CATEGORIES, LIVRES } from '../models/data';
+import { LIVRES } from '../models/data';
 import { Card, Title } from 'react-native-paper';
+import { CATEGORIES } from '../models/data';
 
 export default function BooksCategories() {
   // Récupérer l'ID de la catégorie à afficher depuis les paramètres de navigation
   const { categorieId } = useRoute().params;
 
-  // Récupérer la catégorie sélectionnée depuis le tableau CATEGORIES
-  const selectedCategory = CATEGORIES.find((cat) => cat.id === categorieId);
-
   // Filtrer les livres en fonction de la catégorie sélectionnée
-  const filteredBooks = LIVRES.filter((livre) => livre.categorieId === categorieId);
+  const filteredBooks = categorieId === 'c5' ? LIVRES : LIVRES.filter((livre) => livre.categorieId.includes(categorieId));
 
   return (
     <View style={styles.container}>
       {/* Afficher le titre de la catégorie */}
-      <Text style={styles.categoryTitle}>{selectedCategory?.genre}</Text>
+      <Text style={styles.categoryTitle}>{CATEGORIES.find((cat) => cat.id === categorieId)?.genre}</Text>
       {/* Liste des livres filtrés */}
       <FlatList
         data={filteredBooks}
@@ -30,7 +28,7 @@ export default function BooksCategories() {
             </Card.Content>
           </Card>
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         ListEmptyComponent={<Text>Aucun livre trouvé</Text>} // Affiche le message si la liste est vide
       />
     </View>

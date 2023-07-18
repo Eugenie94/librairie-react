@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { CATEGORIES, LIVRES } from '../models/data';
+import { CATEGORIES } from '../models/data';
+import { LIVRES } from '../models/data';
 
 export default function Categories() {
   const navigation = useNavigation();
@@ -9,7 +10,6 @@ export default function Categories() {
   const [couleurCategorie, setCouleurCategorie] = useState('');
   const [isFormVisible, setIsFormVisible] = useState(false);
 
-  // Fonction pour ajouter une nouvelle catégorie
   const handleAddCategorie = () => {
     const newCategorie = {
       // Générer un ID unique pour la nouvelle catégorie
@@ -17,13 +17,14 @@ export default function Categories() {
       genre: titreCategorie,
       couleur: couleurCategorie,
     };
-
-// Ajouter la nouvelle catégorie à la liste existante des catégories
-CATEGORIES.push(newCategorie);
-
+  
+    // Ajouter la nouvelle catégorie à la liste existante des catégories
+    CATEGORIES.push(newCategorie);
+  
     // Effacer les champs de saisie après l'ajout de la catégorie
     setTitreCategorie('');
     setCouleurCategorie('');
+    setIsFormVisible(false); 
   };
 
   const handleCategoryPress = (categorie) => {
@@ -56,8 +57,12 @@ CATEGORIES.push(newCategorie);
     <View style={styles.container}>
       {/* Afficher le formulaire d'ajout de catégorie */}
       <View style={styles.formContainer}>
-      {!isFormVisible && (
-          <Button title="Ajouter une catégorie" onPress={() => setIsFormVisible(true)} />
+        {!isFormVisible && (
+          <View style={styles.addButtonContainer}>
+            <TouchableOpacity style={styles.addButton} onPress={() => setIsFormVisible(true)}>
+              <Text style={styles.addButtonText}>Ajouter une catégorie</Text>
+            </TouchableOpacity>
+          </View>
         )}
         {isFormVisible && (
           <>
@@ -81,8 +86,8 @@ CATEGORIES.push(newCategorie);
         )}
       </View>
 
- {/* Afficher les catégories sous forme de grille */}
- {categoriesChunks.map((chunk, index) => (
+      {/* Afficher les catégories sous forme de grille */}
+      {categoriesChunks.map((chunk, index) => (
         <View key={index} style={styles.categoryRow}>
           {chunk.map((category) => (
             <View key={category.id} style={styles.categoryItem}>
@@ -101,7 +106,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   formContainer: {
-    marginBottom: 40,
+    marginBottom: 20,
   },
   label: {
     fontSize: 18,
@@ -134,5 +139,22 @@ const styles = StyleSheet.create({
   },
   buttonMargin: {
     marginVertical: 10,
+  },
+  addButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addButton: {
+    backgroundColor: '#fff',
+    borderColor: '#f5428d',
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+  },
+  addButtonText: {
+    color: '#f5428d',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });

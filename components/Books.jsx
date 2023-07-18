@@ -95,8 +95,12 @@ return (
         </>
       )}
       {!isFormExpanded && (
-        <Button title="Ajouter un livre" onPress={() => setIsFormExpanded(true)} />
-      )}
+        <View style={styles.addButtonContainer}>
+  <TouchableOpacity style={styles.addButton} onPress={() => setIsFormExpanded(true)}>
+    <Text style={styles.addButtonText}>Ajouter un livre</Text>
+  </TouchableOpacity>
+</View>     
+ )}
     </View>
 
     {/* Liste de livres */}
@@ -169,5 +173,22 @@ const styles = StyleSheet.create({
   },
   buttonMargin: {
     marginVertical: 10,
+  },
+  addButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addButton: {
+    backgroundColor: '#fff',
+    borderColor: '#f5428d',
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+  },
+  addButtonText: {
+    color: '#f5428d',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
