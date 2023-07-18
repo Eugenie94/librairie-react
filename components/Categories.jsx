@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CATEGORIES } from '../models/data';
-import { LIVRES } from '../models/data';
 
 export default function Categories() {
   const navigation = useNavigation();
@@ -17,14 +16,14 @@ export default function Categories() {
       genre: titreCategorie,
       couleur: couleurCategorie,
     };
-  
+
     // Ajouter la nouvelle catégorie à la liste existante des catégories
     CATEGORIES.push(newCategorie);
-  
+
     // Effacer les champs de saisie après l'ajout de la catégorie
     setTitreCategorie('');
     setCouleurCategorie('');
-    setIsFormVisible(false); 
+    setIsFormVisible(false);
   };
 
   const handleCategoryPress = (categorie) => {
@@ -40,8 +39,8 @@ export default function Categories() {
     return chunks;
   };
 
-   // Fonction pour afficher le bouton de catégorie
-   const renderCategoryButton = ({ item }) => (
+  // Fonction pour afficher le bouton de catégorie
+  const renderCategoryButton = ({ item }) => (
     <TouchableOpacity
       style={[styles.categoryButton, { backgroundColor: item.couleur }]}
       onPress={() => handleCategoryPress(item)}
@@ -59,28 +58,39 @@ export default function Categories() {
       <View style={styles.formContainer}>
         {!isFormVisible && (
           <View style={styles.addButtonContainer}>
-            <TouchableOpacity style={styles.addButton} onPress={() => setIsFormVisible(true)}>
-              <Text style={styles.addButtonText}>Ajouter une catégorie</Text>
+            <TouchableOpacity style={[styles.addButton, styles.addButtonTextStyle]} onPress={() => setIsFormVisible(true)}>
+              <Text style={[styles.addButtonText, styles.reduceFormButton]}>Ajouter une catégorie</Text>
             </TouchableOpacity>
           </View>
         )}
         {isFormVisible && (
           <>
+            {/* Champ de saisie pour le titre de la catégorie */}
             <TextInput
               style={styles.input}
               value={titreCategorie}
               onChangeText={setTitreCategorie}
               placeholder="Titre de la catégorie"
             />
+            {/* Champ de saisie pour la couleur de la catégorie */}
             <TextInput
               style={styles.input}
               value={couleurCategorie}
               onChangeText={setCouleurCategorie}
               placeholder="Couleur de la catégorie"
             />
-            <Button title="Ajouter" onPress={handleAddCategorie} />
+            {/* Bouton pour ajouter la catégorie */}
+            <TouchableOpacity style={[styles.addButton, styles.addButtonTextStyle]} onPress={handleAddCategorie}>
+              <Text style={[styles.addButtonText, styles.reduceFormButton]}>Ajouter</Text>
+            </TouchableOpacity>
+            {/* Bouton pour réduire le formulaire */}
             <View style={styles.buttonMargin}>
-              <Button title="Réduire le formulaire" onPress={() => setIsFormVisible(false)} />
+              <TouchableOpacity
+                style={[styles.addButton, styles.reduceFormButton]}
+                onPress={() => setIsFormVisible(false)}
+              >
+                <Text style={styles.addButtonText}>Réduire le formulaire</Text>
+              </TouchableOpacity>
             </View>
           </>
         )}
@@ -107,11 +117,6 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     marginBottom: 20,
-  },
-  label: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
   },
   input: {
     borderWidth: 1,
@@ -144,17 +149,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  addButton: {
+  addButtonText: {
+    color: '#f5428d',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  reduceFormButton: {
     backgroundColor: '#fff',
     borderColor: '#f5428d',
     borderWidth: 1,
     borderRadius: 15,
     paddingVertical: 8,
     paddingHorizontal: 20,
+    alignSelf: 'center',
+    minWidth: '70%',
   },
-  addButtonText: {
+  addButtonTextStyle: {
     color: '#f5428d',
-    fontWeight: 'bold',
-    fontSize: 16,
+    alignSelf: 'center',
+    textAlign: 'center',
   },
 });

@@ -11,110 +11,117 @@ export default function Books() {
   const [imageUrl, setImageUrl] = useState('https://cdn1.booknode.com/book_cover/0/le_parfum-122-264-432.jpg');
   const [isFormExpanded, setIsFormExpanded] = useState(false);
 
- // Fonction pour ajouter un nouveau livre
- const handleAddLivre = () => {
-  const newLivre = {
-    id: LIVRES.length + 1,
-    titre: titreLivre,
-    description: descriptionLivre,
-    categorieId: categorieId,
-    tomes: tomes || 1,
-    imageUrl: imageUrl,
+  // Fonction pour ajouter un nouveau livre
+  const handleAddLivre = () => {
+    const newLivre = {
+      id: LIVRES.length + 1,
+      titre: titreLivre,
+      description: descriptionLivre,
+      categorieId: categorieId,
+      tomes: tomes || 1,
+      imageUrl: imageUrl,
+    };
+    setIsFormExpanded(false);
+
+    LIVRES.push(newLivre);
+
+    // Effacer les champs de saisie après l'ajout du livre
+    setTitreLivre('');
+    setDescriptionLivre('');
+    setCategorieId('');
+    setImageUrl('');
+    setTomes('');
+    setIsFormExpanded(false);
   };
-  setIsFormExpanded(false);
 
-  LIVRES.push(newLivre);
+  // Fonction pour afficher un livre dans la liste
+  const renderLivre = ({ item }) => (
+    <TouchableOpacity activeOpacity={0.8}>
+      <Card style={[styles.card, styles.bookCard]}>
+        <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
+        <Card.Content>
+          <Text style={styles.titre}>{item.titre}</Text>
+          <Text style={styles.description} numberOfLines={3}>
+            {item.description}
+          </Text>
+          <Text style={styles.tomes}>Tomes: {item.tomes}</Text>
+        </Card.Content>
+      </Card>
+    </TouchableOpacity>
+  );
 
-  // Effacer les champs de saisie après l'ajout du livre
-  setTitreLivre('');
-  setDescriptionLivre('');
-  setCategorieId('');
-  setImageUrl('');
-  setTomes('');
-  setIsFormExpanded(false);
-};
-
-// Fonction pour afficher un livre dans la liste
-const renderLivre = ({ item }) => (
-  <TouchableOpacity activeOpacity={0.8}>
-    <Card style={[styles.card, styles.bookCard]}>
-      <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
-      <Card.Content>
-        <Text style={styles.titre}>{item.titre}</Text>
-        <Text style={styles.description} numberOfLines={3}>
-          {item.description}
-        </Text>
-        <Text style={styles.tomes}>Tomes: {item.tomes}</Text>
-      </Card.Content>
-    </Card>
-  </TouchableOpacity>
-);
-
-return (
-  <View style={styles.container}>
-    {/* Formulaire pour ajouter un livre */}
-    <View style={styles.formContainer}>
-      {isFormExpanded && (
-        <>
-          <TextInput
-            style={styles.input}
-            value={titreLivre}
-            onChangeText={setTitreLivre}
-            placeholder="Titre du livre"
-          />
-          <TextInput
-            style={[styles.input, styles.multilineInput]}
-            value={descriptionLivre}
-            onChangeText={setDescriptionLivre}
-            placeholder="Description du livre"
-            multiline
-            numberOfLines={4}
-          />
-          <TextInput
-            style={styles.input}
-            value={categorieId}
-            onChangeText={setCategorieId}
-            placeholder="Catégorie du livre"
-          />
-          <TextInput
-            style={styles.input}
-            value={imageUrl}
-            onChangeText={setImageUrl}
-            placeholder="URL de l'image du livre"
-          />
-          <TextInput
-            style={styles.input}
-            value={tomes}
-            onChangeText={setTomes}
-            placeholder="Tome du livre"
-          />
-          <Button title="Ajouter" onPress={handleAddLivre} />
-          <View style={styles.buttonMargin}>
-            <Button title="Réduire le formulaire" onPress={() => setIsFormExpanded(false)} />
+  return (
+    <View style={styles.container}>
+      {/* Formulaire pour ajouter un livre */}
+      <View style={styles.formContainer}>
+        {isFormExpanded && (
+          <>
+            <TextInput
+              style={styles.input}
+              value={titreLivre}
+              onChangeText={setTitreLivre}
+              placeholder="Titre du livre"
+            />
+            <TextInput
+              style={[styles.input, styles.multilineInput]}
+              value={descriptionLivre}
+              onChangeText={setDescriptionLivre}
+              placeholder="Description du livre"
+              multiline
+              numberOfLines={4}
+            />
+            <TextInput
+              style={styles.input}
+              value={categorieId}
+              onChangeText={setCategorieId}
+              placeholder="Catégorie du livre"
+            />
+            <TextInput
+              style={styles.input}
+              value={imageUrl}
+              onChangeText={setImageUrl}
+              placeholder="URL de l'image du livre"
+            />
+            <TextInput
+              style={styles.input}
+              value={tomes}
+              onChangeText={setTomes}
+              placeholder="Tome du livre"
+            />
+            <TouchableOpacity style={[styles.addButton, styles.reduceFormButton]} onPress={handleAddLivre}>
+              <Text style={styles.addButtonText}>Ajouter</Text>
+            </TouchableOpacity>
+            <View style={styles.buttonMargin}>
+              <TouchableOpacity
+                style={[styles.addButton, styles.addButtonTextStyle, styles.reduceFormButton]}
+                onPress={() => setIsFormExpanded(false)}
+              >
+                <Text style={styles.addButtonText}>Réduire le formulaire</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
+        {!isFormExpanded && (
+          <View style={styles.addButtonContainer}>
+            <TouchableOpacity style={styles.addButton} onPress={() => setIsFormExpanded(true)}>
+              <Text style={styles.addButtonText}>Ajouter un livre</Text>
+            </TouchableOpacity>
           </View>
-        </>
-      )}
-      {!isFormExpanded && (
-        <View style={styles.addButtonContainer}>
-  <TouchableOpacity style={styles.addButton} onPress={() => setIsFormExpanded(true)}>
-    <Text style={styles.addButtonText}>Ajouter un livre</Text>
-  </TouchableOpacity>
-</View>     
- )}
-    </View>
+        )}
+      </View>
 
-    {/* Liste de livres */}
-    <View style={styles.listContainer}>
-      <FlatList
-        data={LIVRES}
-        renderItem={renderLivre}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.flatListContent}
-      />
+      {/* Liste de livres */}
+      <View style={styles.listContainer}>
+        <FlatList
+          data={LIVRES}
+          renderItem={renderLivre}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={styles.flatListContent}
+        />
+      </View>
     </View>
-  </View>
-);
-      }
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -185,10 +192,29 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     paddingVertical: 8,
     paddingHorizontal: 20,
+    alignSelf: 'center',
+    minWidth: '70%',
   },
   addButtonText: {
     color: '#f5428d',
     fontWeight: 'bold',
     fontSize: 16,
+    textAlign: 'center', 
+  },
+  reduceFormButton: {
+    backgroundColor: '#fff',
+    borderColor: '#f5428d',
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    alignSelf: 'center',
+    minWidth: '70%',
+  },
+  addButtonTextStyle: {
+    color: '#f5428d',
+    alignSelf: 'center',
+    textAlign: 'center', 
   },
 });
+

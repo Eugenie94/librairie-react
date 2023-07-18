@@ -6,7 +6,7 @@ import { LIVRES } from '../models/data';
 export default function SearchBooks() {
   const [searchText, setSearchText] = useState('');
 
-  // Gérer le changement du texte de recherche
+  // Fonction pour gérer le changement du texte de recherche
   const handleSearchTextChange = (text) => {
     setSearchText(text);
   };
@@ -32,12 +32,14 @@ export default function SearchBooks() {
   return (
     <View style={styles.container}>
       {/* Champ de recherche */}
-      <TextInput
-        style={styles.searchInput}
-        placeholder="Rechercher un livre par son nom"
-        onChangeText={handleSearchTextChange}
-        value={searchText}
-      />
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Rechercher un livre par son nom"
+          onChangeText={handleSearchTextChange}
+          value={searchText}
+        />
+      </View>
 
       {/* Liste des livres filtrés */}
       <FlatList
@@ -57,12 +59,33 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 50,
   },
-  searchInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 30,
-    padding: 10,
+  },
+  searchInput: {
+    flex: 1,
+    height: 40,
+    borderRadius: 15,
+    borderColor: 'pink',
+    borderWidth: 1,
+    paddingHorizontal: 15,
+    maxWidth: 300, // Définir la largeur maximale de la barre de recherche
+    alignSelf: 'center', // Centrer la barre de recherche
+  },
+  searchButton: {
+    backgroundColor: 'pink',
+    borderRadius: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginLeft: 10,
+  },
+  searchButtonText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
   flatListContent: {
     paddingBottom: 20,
