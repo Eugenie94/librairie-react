@@ -18,7 +18,7 @@ export default function App() {
       <View style={styles.container}>
         {/* Image et titre */}
         <View style={styles.imageContainer}>
-          <Image source={require('./assets/imagee.jpg')} style={styles.image} />
+          <Image source={require('./assets/image.jpg')} style={styles.image} />
         </View>
 
         {/* Contenu de la navigation */}
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 100,
+    height: 170,
   },
 });

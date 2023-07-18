@@ -7,6 +7,7 @@ export default function Categories() {
   const navigation = useNavigation();
   const [titreCategorie, setTitreCategorie] = useState('');
   const [couleurCategorie, setCouleurCategorie] = useState('');
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const handleAddCategorie = () => {
     // Create a new category object with the entered values
@@ -55,20 +56,27 @@ export default function Categories() {
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.label}>Ajouter une catégorie :</Text>
-        <TextInput
-          style={styles.input}
-          value={titreCategorie}
-          onChangeText={setTitreCategorie}
-          placeholder="Titre de la catégorie"
-        />
-        <TextInput
-          style={styles.input}
-          value={couleurCategorie}
-          onChangeText={setCouleurCategorie}
-          placeholder="Couleur de la catégorie"
-        />
-        <Button title="Ajouter" onPress={handleAddCategorie} />
+        {!isFormVisible && (
+          <Button title="Ajouter une catégorie" onPress={() => setIsFormVisible(true)} />
+        )}
+        {isFormVisible && (
+          <>
+            <TextInput
+              style={styles.input}
+              value={titreCategorie}
+              onChangeText={setTitreCategorie}
+              placeholder="Titre de la catégorie"
+            />
+            <TextInput
+              style={styles.input}
+              value={couleurCategorie}
+              onChangeText={setCouleurCategorie}
+              placeholder="Couleur de la catégorie"
+            />
+            <Button title="Ajouter" onPress={handleAddCategorie} />
+            <Button title="Cacher le formulaire" onPress={() => setIsFormVisible(false)} />
+          </>
+        )}
       </View>
 
       {categoriesChunks.map((chunk, index) => (
@@ -106,7 +114,6 @@ const styles = StyleSheet.create({
   categoryRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
   },
   categoryItem: {
     flex: 1,

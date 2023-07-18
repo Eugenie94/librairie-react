@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   card: {
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: 'white',
     borderRadius: 8,
     shadowColor: 'rgba(0, 0, 0, 0.1)',
@@ -58,9 +58,20 @@ const styles = StyleSheet.create({
     borderColor: '#A2A2A2',
   },
   coverImage: {
-    height: 200,
+    height: 150, 
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
+  },
+  titre: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: 6,
+  },
+  description: {
+    fontSize: 14,
+    marginBottom: 6, 
+    color: '#666',
   },
   bookTitle: {
     fontSize: 18,

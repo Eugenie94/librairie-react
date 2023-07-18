@@ -11,15 +11,6 @@ export const CATEGORIES = [
 
 export const LIVRES = [
   new Livre(
-    'm1',
-    ['c2'],
-    'Detective conan',
-    "Le manga retrace le parcours de Shinichi Kudo, détective lycéen rajeuni à la suite de l'ingestion d'une mystérieuse drogue qui le fait rajeunir au stade d'écolier de 7 ans. Hébergé chez son amie d'enfance Ran et son père Kogoro Mouri, il va devoir, secrètement, chercher à retrouver son corps d'antan et mettre l'Organisation responsable de son état sous les verrous…",
-    100,
-    'https://upload.wikimedia.org/wikipedia/fr/thumb/0/06/Logo_D%C3%A9tective_Conan.svg/langfr-2880px-Logo_D%C3%A9tective_Conan.svg.png',
-    true,
-  ),
-  new Livre(
     'm2',
     ['c1', 'c2'],
     "Les disparus de Blackmore",
@@ -45,6 +36,15 @@ export const LIVRES = [
     2,
     "https://images.noosfere.org/couv/p/pp5069-1981.jpg",
     false
+  ),
+  new Livre(
+    'm1',
+    ['c2'],
+    'Detective conan',
+    "Le manga retrace le parcours de Shinichi Kudo, détective lycéen rajeuni à la suite de l'ingestion d'une mystérieuse drogue qui le fait rajeunir au stade d'écolier de 7 ans. Hébergé chez son amie d'enfance Ran et son père Kogoro Mouri, il va devoir, secrètement, chercher à retrouver son corps d'antan et mettre l'Organisation responsable de son état sous les verrous…",
+    100,
+    'https://upload.wikimedia.org/wikipedia/fr/thumb/0/06/Logo_D%C3%A9tective_Conan.svg/langfr-2880px-Logo_D%C3%A9tective_Conan.svg.png',
+    true,
   ),
   new Livre(
     'm5',

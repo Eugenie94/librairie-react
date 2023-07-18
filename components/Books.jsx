@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import { Card, TextInput, Button } from 'react-native-paper';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Button } from 'react-native';
+import { Card } from 'react-native-paper';
 import { LIVRES } from '../models/data';
 
 export default function Books() {
@@ -10,6 +10,7 @@ export default function Books() {
   const [tomes, setTomes] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [enCours, setEnCours] = useState(false);
+  const [isFormExpanded, setIsFormExpanded] = useState(false);
 
   const handleAddLivre = () => {
     const newLivre = {
@@ -21,68 +22,86 @@ export default function Books() {
       imageUrl: imageUrl,
       enCours: enCours,
     };
-    
+
     LIVRES.push(newLivre);
 
     setTitreLivre('');
     setDescriptionLivre('');
     setCategorieId('');
     setImageUrl('');
+    setTomes('');
+    setIsFormExpanded(false);
   };
 
   const renderLivre = ({ item }) => (
     <TouchableOpacity activeOpacity={0.8}>
-    <Card style={[styles.card, styles.bookCard]}>
+      <Card style={[styles.card, styles.bookCard]}>
         <Card.Cover source={{ uri: item.imageUrl }} style={styles.coverImage} />
         <Card.Content>
           <Text style={styles.titre}>{item.titre}</Text>
-          <Text style={styles.description}>{item.description}</Text>
+          <Text style={styles.description} numberOfLines={3}>
+            {item.description}
+          </Text>
           <Text style={styles.tomes}>Tomes: {item.tomes}</Text>
         </Card.Content>
       </Card>
     </TouchableOpacity>
   );
-
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.label}>Ajouter un livre :</Text>
-        <TextInput
-          style={styles.input}
-          value={titreLivre}
-          onChangeText={setTitreLivre}
-          placeholder="Titre du livre"
-        />
-        <TextInput
-          style={[styles.input, styles.multilineInput]}
-          value={descriptionLivre}
-          onChangeText={setDescriptionLivre}
-          placeholder="Description du livre"
-          multiline
-          numberOfLines={4}
-        />
-        <TextInput
-          style={styles.input}
-          value={categorieId}
-          onChangeText={setCategorieId}
-          placeholder="Catégorie du livre"
-        />
-        <TextInput
-          style={styles.input}
-          value={imageUrl}
-          onChangeText={setImageUrl}
-          placeholder="URL de l'image du livre"
-        />
-        <Button mode="contained" onPress={handleAddLivre}>Ajouter</Button>
+        {isFormExpanded && (
+          <>
+            <TextInput
+              style={styles.input}
+              value={titreLivre}
+              onChangeText={setTitreLivre}
+              placeholder="Titre du livre"
+            />
+            <TextInput
+              style={[styles.input, styles.multilineInput]}
+              value={descriptionLivre}
+              onChangeText={setDescriptionLivre}
+              placeholder="Description du livre"
+              multiline
+              numberOfLines={4}
+            />
+            <TextInput
+              style={styles.input}
+              value={categorieId}
+              onChangeText={setCategorieId}
+              placeholder="Catégorie du livre"
+            />
+            <TextInput
+              style={styles.input}
+              value={imageUrl}
+              onChangeText={setImageUrl}
+              placeholder="URL de l'image du livre"
+            />
+            <TextInput
+              style={styles.input}
+              value={tomes}
+              onChangeText={setTomes}
+              placeholder="Tome du livre"
+            />
+            <Button title="Ajouter" onPress={handleAddLivre} />
+            <Button title="Réduire le formulaire" onPress={() => setIsFormExpanded(false)} />
+          </>
+        )}
+        {!isFormExpanded && (
+          <Button title="Ajouter un livre" onPress={() => setIsFormExpanded(true)} />
+        )}
       </View>
 
       {/* Liste de livres */}
-      <FlatList
-        data={LIVRES}
-        renderItem={renderLivre}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.flatListContent}
-      />
+      <View style={styles.listContainer}>
+        <FlatList
+          data={LIVRES}
+          renderItem={renderLivre}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={styles.flatListContent}
+        />
+      </View>
     </View>
   );
 }
@@ -95,26 +114,26 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     marginBottom: 20,
-    padding: 10,
-    backgroundColor: 'white',
-    borderRadius: 8,
-    shadowColor: 'rgba(0, 0, 0, 0.1)',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 1,
-    shadowRadius: 4,
-    elevation: 3,
+  },
+  listContainer: {
+    flex: 1,
   },
   label: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
     marginBottom: 10,
-    color: '#333',
   },
   flatListContent: {
     paddingBottom: 20,
   },
   card: {
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: 'white',
     borderRadius: 8,
     shadowColor: 'rgba(0, 0, 0, 0.1)',
@@ -128,18 +147,20 @@ const styles = StyleSheet.create({
     borderColor: '#A2A2A2',
   },
   coverImage: {
-    height: 200,
+    height: 150, 
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
   titre: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginTop: 10,
+    marginBottom: 6,
   },
   description: {
-    fontSize: 16,
-    marginBottom: 8,
+    fontSize: 14,
+    marginBottom: 6, 
+    color: '#666',
   },
   tomes: {
     fontSize: 14,

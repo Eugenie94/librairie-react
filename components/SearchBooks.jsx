@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   card: {
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: 'white',
     borderRadius: 8,
     shadowColor: 'rgba(0, 0, 0, 0.1)',
@@ -78,18 +78,20 @@ const styles = StyleSheet.create({
     borderColor: '#A2A2A2',
   },
   coverImage: {
-    height: 200,
+    height: 150, 
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
   titre: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginTop: 10,
+    marginBottom: 6,
   },
   description: {
-    fontSize: 16,
-    marginBottom: 8,
+    fontSize: 14,
+    marginBottom: 6, 
+    color: '#666',
   },
   tomes: {
     fontSize: 14,

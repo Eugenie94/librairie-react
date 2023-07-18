@@ -10,7 +10,6 @@ const Profile = () => {
             />
             <Text style={styles.name}>Eugénie KHAYAT</Text>
             <Text style={styles.bio}>Passionate Book Lover</Text>
-            <Text style={styles.about}>About Me:</Text>
             <Text style={styles.aboutText}>
                 I love reading books from various genres, especially science fiction and fantasy. My favorite authors include J.K. Rowling, George R.R. Martin, and Neil Gaiman. Reading is my escape from reality and a way to explore new worlds and ideas. When I'm not reading, you can find me curled up with a cup of tea, lost in the pages of a good book.
             </Text>
